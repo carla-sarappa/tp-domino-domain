@@ -1,10 +1,34 @@
 package ar.edu.unq.uis.domino;
 
-import java.util.HashSet
-import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.List
+import java.util.ArrayList
 
 @Accessors
 class RepoClientes {
-	Set<Cliente> clientes = new HashSet<Cliente>
+    private static final RepoClientes INSTANCE = new RepoClientes()
+    List<Cliente> clientes = new ArrayList<Cliente>
+    
+
+    private new() {
+        if (INSTANCE != null) {
+            throw new IllegalStateException("Already instantiated")
+        }
+    }
+
+    def static RepoClientes getInstance() {
+        return INSTANCE
+    }
+	
+	
+	def nuevoCliente(Cliente cliente){
+		if (clientes.stream.anyMatch[c | c.email == cliente.email || c.nick == cliente.nick ]){
+			throw new RuntimeException("Ya existe usuario registrado con ese email o nick")
+		}
+		clientes.add(cliente)
+	}
+	
+	def clear(){
+		clientes = new ArrayList<Cliente>
+	}
 }

@@ -22,5 +22,10 @@ class Pedido {
 	def agregarPedido(Plato plato) {
 		platos.add(plato)
 	}
+	
+	new(Cliente cliente, FormaDeEnvio formaDeEnvio){
+		this.estado = Estado.PREPARANDO
+		this.formaDeEnvio = formaDeEnvio
+	}
 
 }

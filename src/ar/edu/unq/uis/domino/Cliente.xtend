@@ -6,6 +6,11 @@ class Cliente {
 	String nombre
 	String nick
 	String password
-	String mail
+	String email
 	String direccion
+	
+	new(String nick, String email){
+		this.nick = nick
+		this.email = email
+	}
 }

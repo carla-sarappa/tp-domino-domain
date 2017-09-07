@@ -24,6 +24,11 @@ class Plato {
 	}
 	
 	def calcularExtras(){
-		ingredientesExtras.map[ getCosto() ].reduce[ a,b | a+b ]
+		if (ingredientesExtras.size == 0) {
+			return 0
+		} else {
+			ingredientesExtras.map[ getCosto() ].reduce[ a,b | a+b ]
+			
+		}
 	}
 }
