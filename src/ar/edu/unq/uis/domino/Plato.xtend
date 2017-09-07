@@ -14,4 +14,7 @@ class Plato {
 		this.tamanio = tamanio
 	}
 	
+	def getPrecio(){
+		pizzaBase.getPrecioBase() * tamanio.factor 
+	}
 }

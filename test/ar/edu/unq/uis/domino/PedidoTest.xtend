@@ -21,7 +21,7 @@ class PedidoTest {
 		
 		pedido.agregarPedido(plato)
 		
-		assertEquals(pedido.calcularMonto(), 10.0, 0)
+		assertEquals(pedido.getMonto(), 10.0, 0)
 		
 	}
 	
@@ -34,7 +34,7 @@ class PedidoTest {
 		
 		pedido.agregarPedido(plato)
 		
-		assertEquals(pedido.calcularMonto(), 1.25, 0)
+		assertEquals(pedido.getMonto(), 1.25, 0)
 		
 	}
 }

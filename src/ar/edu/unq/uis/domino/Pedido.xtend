@@ -14,8 +14,8 @@ class Pedido {
 	Estado estado
 	FormaDeEnvio formaDeEnvio
 	
-	def calcularMonto(){ 
-		platos.map[ pizzaBase.getPrecioBase() * getTamanio().factor ].reduce[ a,b | a+b ]
+	def getMonto(){ 
+		platos.map[ getPrecio() ].reduce[ a,b | a+b ]
 		
 	}
 	
