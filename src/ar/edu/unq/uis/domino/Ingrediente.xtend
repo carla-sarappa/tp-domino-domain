@@ -5,6 +5,11 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Ingrediente {
 	String nombre
-	String distribucion
-	Double costo
+	Distribucion distribucion
+	
+	new(String nombre, Distribucion distribucion){
+		this.nombre = nombre
+		this.distribucion = distribucion
+	}
 }
+
