@@ -1,3 +1,4 @@
+package ar.edu.unq.uis.domino;
 
 enum Estado {
 	PREPARANDO,

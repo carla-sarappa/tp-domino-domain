@@ -1,4 +1,4 @@
-
+package ar.edu.unq.uis.domino;
 
 import java.util.HashSet
 import java.util.Set
