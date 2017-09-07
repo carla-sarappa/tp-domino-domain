@@ -1,8 +1,10 @@
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class Ingrediente {
+class Cliente {
 	String nombre
-	String distribucion
-	Double costo
+	String nick
+	String password
+	String mail
+	String direccion
 }
