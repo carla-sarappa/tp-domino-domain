@@ -14,6 +14,18 @@ class PlatoTest {
 				
 		
 		assertEquals(3.25, plato.getPrecio(), 0)
+	}
+	
+	@Test
+	def dadoUnPlatoConTamanioFamiliarYPizzaCustom_suPrecioEsDe87con50(){
+		val pizzaCustom = PizzaFactory.construirPizzaCustom("Pindonga")
+		val provolone = new Ingrediente("Provolone", Distribucion.MITAD_DERECHA)
+		val rucula = new Ingrediente("Rucula", Distribucion.MITAD_IZQUIERDA)
+		pizzaCustom.agregarIngrediente(provolone)
+		pizzaCustom.agregarIngrediente(rucula)
 		
+		val plato = new Plato(pizzaCustom, Tamanio.FAMILIAR)
+		
+		assertEquals(87.5, plato.getPrecio(), 0)
 	}
 }

@@ -15,4 +15,8 @@ class Pizza {
 		this.precioBase = precio
 	}
 	
+	def agregarIngrediente(Ingrediente ingrediente){
+		ingredientes.add(ingrediente)
+	}
+	
 }
