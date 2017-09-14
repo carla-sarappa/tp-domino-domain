@@ -3,9 +3,9 @@ package ar.edu.unq.uis.domino;
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
-
+import org.uqbar.commons.model.Entity
 @Accessors
-class Pizza {
+class Pizza extends Entity {
 	String nombre
 	Double precioBase
 	List<Ingrediente> ingredientes = new ArrayList<Ingrediente>
