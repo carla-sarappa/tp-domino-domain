@@ -1,9 +1,11 @@
-package ar.edu.unq.uis.domino;
+package ar.edu.unq.uis.domino.model
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
+import org.uqbar.commons.model.annotations.Observable
 
+@Observable
 @Accessors
 class Plato {
 	Pizza pizzaBase

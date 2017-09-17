@@ -1,11 +1,9 @@
 package ar.edu.unq.uis.domino.repo
 
-
 import org.uqbar.commons.model.CollectionBasedRepo
 import org.uqbar.commons.model.annotations.Observable
-import ar.edu.unq.uis.domino.Pizza
-
-import ar.edu.unq.uis.domino.PizzaFactory
+import ar.edu.unq.uis.domino.model.Pizza
+import ar.edu.unq.uis.domino.model.PizzaFactory
 
 @Observable
 class RepoPizza extends CollectionBasedRepo<Pizza> {

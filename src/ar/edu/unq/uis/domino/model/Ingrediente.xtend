@@ -1,4 +1,4 @@
-package ar.edu.unq.uis.domino;
+package ar.edu.unq.uis.domino.model;
 
 import org.eclipse.xtend.lib.annotations.Accessors
 

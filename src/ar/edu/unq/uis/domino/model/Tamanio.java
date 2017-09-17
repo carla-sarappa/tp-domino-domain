@@ -1,4 +1,4 @@
-package ar.edu.unq.uis.domino;
+package ar.edu.unq.uis.domino.model;
 enum Tamanio {
 	PORCION (0.125),
 	CHICA (0.5),
