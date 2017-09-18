@@ -6,7 +6,7 @@ import static org.junit.Assert.*
 class PlatoTest {
 	@Test
 	def dadoUnPlatoPorcion_SeCalculaElCostoFinalSegunSuFactor() {
-		val bacon = new IngredienteExtra("Bacon", Distribucion.TODA_LA_PIZZA, 2.0)
+		val bacon = new IngredienteExtra("Bacon", DistribucionEnum.TODA_LA_PIZZA, 2.0)
 		val margherita = new Pizza("Margherita", 10.0)
 		
 		val plato = new Plato(margherita, Tamanio.PORCION)
@@ -19,8 +19,8 @@ class PlatoTest {
 	@Test
 	def dadoUnPlatoConTamanioFamiliarYPizzaCustom_suPrecioEsDe87con50(){
 		val pizzaCustom = PizzaFactory.construirPizzaCustom("Pindonga")
-		val provolone = new Ingrediente("Provolone", Distribucion.MITAD_DERECHA)
-		val rucula = new Ingrediente("Rucula", Distribucion.MITAD_IZQUIERDA)
+		val provolone = new Ingrediente("Provolone", DistribucionEnum.MITAD_DERECHA)
+		val rucula = new Ingrediente("Rucula", DistribucionEnum.MITAD_IZQUIERDA)
 		pizzaCustom.agregarIngrediente(provolone)
 		pizzaCustom.agregarIngrediente(rucula)
 		

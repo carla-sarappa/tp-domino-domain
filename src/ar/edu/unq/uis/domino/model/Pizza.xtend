@@ -11,7 +11,7 @@ import org.uqbar.commons.model.annotations.Observable
 class Pizza extends Entity {
 	String nombre
 	Double precioBase
-	List<Ingrediente> ingredientes = new ArrayList<Ingrediente>
+	List<IngredienteDistribuido> ingredientes = new ArrayList<IngredienteDistribuido>
 	
 	new(String nombre, Double precio) {
 		this.nombre = nombre
@@ -20,7 +20,7 @@ class Pizza extends Entity {
 	
 	new(){}
 	
-	def agregarIngrediente(Ingrediente ingrediente){
+	def agregarIngrediente(IngredienteDistribuido ingrediente){
 		ingredientes.add(ingrediente)
 	}
 	
