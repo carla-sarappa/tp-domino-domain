@@ -1,15 +1,16 @@
 package ar.edu.unq.uis.domino.model;
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.model.Entity
+import org.uqbar.commons.model.annotations.Observable
 
 @Accessors
-class Ingrediente {
+@Observable
+class Ingrediente extends Entity {
 	String nombre
-	Distribucion distribucion
 	
-	new(String nombre, Distribucion distribucion){
+	new(String nombre){
 		this.nombre = nombre
-		this.distribucion = distribucion
 	}
 }
 

@@ -18,6 +18,8 @@ class Pizza extends Entity {
 		this.precioBase = precio
 	}
 	
+	new(){}
+	
 	def agregarIngrediente(Ingrediente ingrediente){
 		ingredientes.add(ingrediente)
 	}
