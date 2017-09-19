@@ -8,7 +8,7 @@ import org.uqbar.commons.model.annotations.Observable
 
 @Observable
 @Accessors
-class Pizza extends Entity {
+class Pizza extends Entity implements Cloneable {
 	String nombre
 	Double precioBase
 	List<IngredienteDistribuido> ingredientes = new ArrayList<IngredienteDistribuido>
