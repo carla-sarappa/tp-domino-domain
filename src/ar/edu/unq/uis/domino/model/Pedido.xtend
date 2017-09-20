@@ -13,6 +13,7 @@ class Pedido {
 	String aclaraciones
 	Estado estado
 	FormaDeEnvio formaDeEnvio
+	String nombre
 	
 	def getMonto(){ 
 		platos.map[ getPrecio() ].reduce[ a,b | a+b ]
