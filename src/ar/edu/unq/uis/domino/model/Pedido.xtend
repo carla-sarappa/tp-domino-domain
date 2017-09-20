@@ -4,12 +4,16 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Date
 import java.util.List
 import java.util.ArrayList
+import org.uqbar.commons.model.Entity
+import org.uqbar.commons.model.annotations.TransactionalAndObservable
 
 @Accessors
-class Pedido {
+@TransactionalAndObservable
+class Pedido extends Entity {
 	List<Plato> platos = new ArrayList<Plato>
 	Cliente cliente
 	Date fecha
+	Date hora
 	String aclaraciones
 	Estado estado
 	FormaDeEnvio formaDeEnvio
@@ -24,9 +28,14 @@ class Pedido {
 		platos.add(plato)
 	}
 	
-	new(Cliente cliente, FormaDeEnvio formaDeEnvio){
-		this.estado = Estado.PREPARANDO
+	new(Cliente cliente, FormaDeEnvio formaDeEnvio, String nombre){
+		this.estado = new Estado("Preparando")
 		this.formaDeEnvio = formaDeEnvio
+		this.nombre = nombre
+	}
+	
+	def getTiempoDeEspera(){
+		
 	}
 
 }

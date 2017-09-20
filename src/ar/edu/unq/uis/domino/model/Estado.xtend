@@ -1,11 +1,20 @@
 package ar.edu.unq.uis.domino.model;
 
-enum Estado {
-	PREPARANDO,
-	LISTO_PARA_RETIRAR,
-	LISTO_PARA_ENVIAR,
-	EN_VIAJE,
-	ENTREGADO,
-	CANCELADO;
+import org.uqbar.commons.model.annotations.Observable
+import org.uqbar.commons.model.Entity
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
+@Observable
+class Estado extends Entity {
+	public String nombre;
 	
+	new(String nombre){
+		this.nombre = nombre;
+	}
+	
+//	override def toString(){
+//		this.nombre
+//	}
+//	
 }
