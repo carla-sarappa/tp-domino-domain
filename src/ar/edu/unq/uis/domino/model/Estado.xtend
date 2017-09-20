@@ -13,8 +13,8 @@ class Estado extends Entity {
 		this.nombre = nombre;
 	}
 	
-//	override def toString(){
-//		this.nombre
-//	}
-//	
+	override def toString(){
+		this.nombre
+	}
+	
 }
