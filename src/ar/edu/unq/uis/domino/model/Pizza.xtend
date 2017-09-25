@@ -10,12 +10,12 @@ import org.uqbar.commons.model.annotations.Observable
 @Accessors
 class Pizza extends Entity implements Cloneable {
 	String nombre
-	Double precioBase
+	Double precio
 	List<IngredienteDistribuido> ingredientes = new ArrayList<IngredienteDistribuido>
 	
 	new(String nombre, Double precio) {
 		this.nombre = nombre
-		this.precioBase = precio
+		this.precio = precio
 	}
 	
 	new(){}

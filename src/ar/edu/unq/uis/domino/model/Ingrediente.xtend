@@ -8,9 +8,11 @@ import org.uqbar.commons.model.annotations.Observable
 @Observable
 class Ingrediente extends Entity {
 	String nombre
+	Double precio
 	
-	new(String nombre){
+	new(String nombre, Double precio){
 		this.nombre = nombre
+		this.precio = precio
 	}
 }
 

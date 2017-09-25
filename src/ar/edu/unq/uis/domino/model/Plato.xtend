@@ -25,14 +25,14 @@ class Plato {
 	}
 	
 	def getPrecio(){
-		(pizzaBase.getPrecioBase() * tamanio.factor) + calcularExtras()
+		(pizzaBase.getPrecio() * tamanio.factor) + calcularExtras()
 	}
 	
 	def calcularExtras(){
 		if (ingredientesExtras.size == 0) {
 			return 0
 		} else {
-			ingredientesExtras.map[ getCosto() ].reduce[ a,b | a+b ]
+			ingredientesExtras.map[ getPrecio() ].reduce[ a,b | a+b ]
 			
 		}
 	}

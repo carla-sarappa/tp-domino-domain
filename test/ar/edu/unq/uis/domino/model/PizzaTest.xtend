@@ -8,7 +8,7 @@ class PizzaTest {
 	@Test
 	def dadaUnaPizzaCustomizada_suPrecioBaseEs70(){
 		val pizzaCustom = PizzaFactory.construirPizzaCustom("SuperDomino")
-		assertEquals(70.0, pizzaCustom.precioBase, 0)
+		assertEquals(70.0, pizzaCustom.precio, 0)
 	}
 	
 }

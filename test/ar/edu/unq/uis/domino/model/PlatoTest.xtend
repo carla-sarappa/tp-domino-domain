@@ -23,8 +23,8 @@ class PlatoTest {
 		val mitadderecha = new Distribucion("Mitad derecha")
 		val mitadizquierda = new Distribucion("Mitad izquierda")
 		
-		val provolone = new Ingrediente("Provolone")
-		val rucula = new Ingrediente("Rucula")
+		val provolone = new Ingrediente("Provolone", 5.0)
+		val rucula = new Ingrediente("Rucula", 4.0)
 		val provoloneIzq = new IngredienteDistribuido(provolone, mitadderecha)
 		val ruculaDer = new IngredienteDistribuido(rucula, mitadizquierda)
 		pizzaCustom.agregarIngrediente(provoloneIzq)
