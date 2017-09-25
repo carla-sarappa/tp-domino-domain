@@ -9,10 +9,13 @@ import org.uqbar.commons.model.annotations.Observable
 @Accessors
 class Plato {
 	Pizza pizzaBase
-	Tamanio tamanio
+	TamanioJava tamanio
 	List<IngredienteExtra> ingredientesExtras = new ArrayList<IngredienteExtra>
 	
-	new(Pizza pizza, Tamanio tamanio) {
+	
+	new(){}
+	
+	new(Pizza pizza, TamanioJava tamanio) {
 		this.pizzaBase = pizza
 		this.tamanio = tamanio
 	}

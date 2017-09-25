@@ -1,5 +1,5 @@
 package ar.edu.unq.uis.domino.model;
-enum Tamanio {
+enum TamanioJava {
 	PORCION (0.125),
 	CHICA (0.5),
 	GRANDE (1),
@@ -7,7 +7,7 @@ enum Tamanio {
 	
 	final double factor;
 	
-	Tamanio(double factor){
+	TamanioJava(double factor){
 		this.factor = factor;
 	}
 

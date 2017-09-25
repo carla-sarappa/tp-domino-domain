@@ -17,8 +17,8 @@ class PedidoTest {
 		val margherita = new Pizza("Margherita", 10.0)
 		val carla = new Cliente("Carla", "carla@gmail.com")
 		
-		val pedido = new Pedido(carla, new RetiraPorElLocal())
-		val plato = new Plato(margherita, Tamanio.GRANDE)
+		val pedido = new Pedido(carla, new RetiraPorElLocal(), "pedido Carla")
+		val plato = new Plato(margherita, TamanioJava.GRANDE)
 		
 		pedido.agregarPedido(plato)
 		
@@ -31,8 +31,8 @@ class PedidoTest {
 		val margherita = new Pizza("Margherita", 10.0)
 		val carla = new Cliente("Carla", "carla@gmail.com")
 		
-		val pedido = new Pedido(carla, new RetiraPorElLocal())
-		val plato = new Plato(margherita, Tamanio.PORCION)
+		val pedido = new Pedido(carla, new RetiraPorElLocal(), "pedido Carla")
+		val plato = new Plato(margherita, TamanioJava.PORCION)
 		
 		pedido.agregarPedido(plato)
 		

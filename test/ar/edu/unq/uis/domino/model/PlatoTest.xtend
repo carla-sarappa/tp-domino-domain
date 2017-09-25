@@ -10,7 +10,7 @@ class PlatoTest {
 		val bacon = new IngredienteExtra("Bacon", todalapizza, 2.0)
 		val margherita = new Pizza("Margherita", 10.0)
 		
-		val plato = new Plato(margherita, Tamanio.PORCION)
+		val plato = new Plato(margherita, TamanioJava.PORCION)
 		plato.agregarExtra(bacon)
 				
 		
@@ -30,7 +30,7 @@ class PlatoTest {
 		pizzaCustom.agregarIngrediente(provoloneIzq)
 		pizzaCustom.agregarIngrediente(ruculaDer)
 		
-		val plato = new Plato(pizzaCustom, Tamanio.FAMILIAR)
+		val plato = new Plato(pizzaCustom, TamanioJava.FAMILIAR)
 		
 		assertEquals(87.5, plato.getPrecio(), 0)
 	}
