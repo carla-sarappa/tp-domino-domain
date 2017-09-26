@@ -14,5 +14,9 @@ class Ingrediente extends Entity {
 		this.nombre = nombre
 		this.precio = precio
 	}
+	
+	new() {
+	}
+	
 }
 
