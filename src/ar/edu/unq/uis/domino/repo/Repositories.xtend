@@ -21,10 +21,6 @@ class Repositories {
 		ApplicationContext.instance.getSingleton(typeof(Distribucion)) as RepoDistribucion
 	}
 	
-	static def RepoEstado getEstados(){
-		ApplicationContext.instance.getSingleton(typeof(Estado)) as RepoEstado
-	}
-	
 	static def RepoPedido getPedidos(){
 		ApplicationContext.instance.getSingleton(typeof(Pedido)) as RepoPedido
 	}

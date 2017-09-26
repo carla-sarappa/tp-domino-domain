@@ -13,7 +13,6 @@ class Pedido extends Entity {
 	List<Plato> platos = new ArrayList<Plato>
 	Cliente cliente
 	Date fecha
-	Date hora
 	String aclaraciones
 	Estado estado
 	FormaDeEnvio formaDeEnvio
@@ -29,9 +28,13 @@ class Pedido extends Entity {
 	}
 	
 	new(Cliente cliente, FormaDeEnvio formaDeEnvio, String nombre){
-		this.estado = new Estado("Preparando")
+		this.estado = formaDeEnvio.estadoInicial
 		this.formaDeEnvio = formaDeEnvio
 		this.nombre = nombre
+	}
+	
+	def siguienteEstado(){
+		this.estado = this.estado.siguiente
 	}
 	
 	def getTiempoDeEspera(){

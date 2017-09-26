@@ -7,14 +7,60 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 @Observable
 class Estado extends Entity {
-	public String nombre;
-	
-	new(String nombre){
-		this.nombre = nombre;
-	}
+	Estado siguiente
+	Estado anterior
 	
 	override def toString(){
-		this.nombre
+		getNombre()
 	}
+	
+	def Estado setSiguiente(Estado sig) {
+		this.siguiente = sig
+		sig.anterior = this
+		sig
+	}
+	
+	def String getNombre(){
+		this.class.simpleName
+	}
+	
+	def Boolean hasNext(){
+		siguiente != null
+	}
+	
+	def Boolean hasPrevious(){
+		anterior != null
+	}
+	
+}
+
+class Preparando extends Estado {
+
+		
+}
+
+class ListoParaRetirar extends Estado {
+	
+	
+	
+}
+class ListoParaEnviar extends Estado {
+	
+	
+	
+}
+class EnViaje extends Estado {
+	
+	
+}
+class Entregado extends Estado {
+	
+	
+	
+}
+
+class Cancelado extends Estado {
+	
+	
 	
 }
