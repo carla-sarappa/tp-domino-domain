@@ -1,5 +1,5 @@
 package ar.edu.unq.uis.domino.model;
-enum TamanioJava {
+public enum TamanioJava {
 	PORCION (0.125),
 	CHICA (0.5),
 	GRANDE (1),

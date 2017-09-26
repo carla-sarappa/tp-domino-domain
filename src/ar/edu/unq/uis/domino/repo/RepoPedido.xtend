@@ -7,8 +7,10 @@ import ar.edu.unq.uis.domino.model.FormaDeEnvio
 
 class RepoPedido extends CollectionBasedRepo<Pedido> {
 	
-	def void createPedido(Cliente cliente, FormaDeEnvio forma, String nombre) {
-		this.create(new Pedido(cliente, forma, nombre))
+	def Pedido createPedido(Cliente cliente, FormaDeEnvio forma, String nombre) {
+		val pedido = new Pedido(cliente, forma, nombre)
+		this.create(pedido)
+		pedido
 	}
 	
 	override createExample() {

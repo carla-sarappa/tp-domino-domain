@@ -23,7 +23,7 @@ class Pedido extends Entity {
 		
 	}
 	
-	def agregarPedido(Plato plato) {
+	def agregarPlato(Plato plato) {
 		platos.add(plato)
 	}
 	
@@ -31,6 +31,7 @@ class Pedido extends Entity {
 		this.estado = formaDeEnvio.estadoInicial
 		this.formaDeEnvio = formaDeEnvio
 		this.nombre = nombre
+		this.cliente = cliente
 	}
 	
 	def estadoSiguiente(){

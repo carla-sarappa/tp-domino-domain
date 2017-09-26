@@ -4,10 +4,11 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
 import org.uqbar.commons.model.annotations.Observable
+import org.uqbar.commons.model.Entity
 
 @Observable
 @Accessors
-class Plato {
+class Plato extends Entity {
 	Pizza pizzaBase
 	TamanioJava tamanio
 	List<IngredienteExtra> ingredientesExtras = new ArrayList<IngredienteExtra>
