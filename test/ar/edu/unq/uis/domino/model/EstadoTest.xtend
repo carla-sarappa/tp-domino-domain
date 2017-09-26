@@ -11,8 +11,8 @@ class EstadoTest {
 		val carla = new Cliente("Carla", "carla@gmail.com")
 		
 		val pedido = new Pedido(carla, new RetiraPorElLocal(), "pedido Carla")
-		pedido.siguienteEstado()
-		pedido.siguienteEstado()		
+		pedido.estadoSiguiente()
+		pedido.estadoSiguiente()		
 		
 		assertEquals("Entregado", pedido.estado.nombre)		
 	}

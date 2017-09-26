@@ -33,8 +33,12 @@ class Pedido extends Entity {
 		this.nombre = nombre
 	}
 	
-	def siguienteEstado(){
+	def estadoSiguiente(){
 		this.estado = this.estado.siguiente
+	}
+	
+	def estadoAnterior(){
+		this.estado = this.estado.anterior
 	}
 	
 	def getTiempoDeEspera(){

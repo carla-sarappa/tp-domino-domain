@@ -7,10 +7,13 @@ import org.uqbar.commons.model.annotations.Observable
 
 @Observable
 abstract class FormaDeEnvio {
+	def double getCostoEnvio(){
+		return 0.0
+	}
 	
 	abstract def Estado getEstadoInicial()
 	
-	def List<Estado> estadosPosibles(){
+	def List<Estado> getEstadosPosibles(){
 		val estados = new ArrayList<Estado>()
 		var estadoInicial = getEstadoInicial()
 		
@@ -21,6 +24,7 @@ abstract class FormaDeEnvio {
 				
 		return estados
 	}
+	
 	
 }
 
