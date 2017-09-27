@@ -9,7 +9,7 @@ import org.uqbar.commons.model.annotations.TransactionalAndObservable
 
 @Accessors
 @TransactionalAndObservable
-class Pedido extends Entity {
+class Pedido extends Entity implements Cloneable {
 	List<Plato> platos = new ArrayList<Plato>
 	Cliente cliente
 	Date fecha
