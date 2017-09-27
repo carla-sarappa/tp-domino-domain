@@ -42,6 +42,10 @@ class Pedido extends Entity {
 		this.estado = this.estado.anterior
 	}
 	
+	def cancelar(){
+		this.estado = new Cancelado()
+	}
+	
 	def getTiempoDeEspera(){
 		
 	}

@@ -24,11 +24,11 @@ class Estado extends Entity {
 		this.class.simpleName
 	}
 	
-	def Boolean hasNext(){
+	def Boolean getHasNext(){
 		siguiente != null
 	}
 	
-	def Boolean hasPrevious(){
+	def Boolean getHasPrevious(){
 		anterior != null
 	}
 	
