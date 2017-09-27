@@ -32,6 +32,10 @@ class Estado extends Entity {
 		anterior != null
 	}
 	
+	def Boolean getCerrado(){
+		false
+	}
+	
 }
 
 class Preparando extends Estado {
@@ -55,12 +59,16 @@ class EnViaje extends Estado {
 }
 class Entregado extends Estado {
 	
-	
+	override Boolean getCerrado(){
+		true
+	}
 	
 }
 
 class Cancelado extends Estado {
 	
-	
+	override Boolean getCerrado(){
+		true
+	}
 	
 }
