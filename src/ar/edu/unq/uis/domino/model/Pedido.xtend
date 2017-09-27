@@ -6,6 +6,7 @@ import java.util.List
 import java.util.ArrayList
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.annotations.TransactionalAndObservable
+import org.uqbar.commons.model.annotations.Dependencies
 
 @Accessors
 @TransactionalAndObservable
@@ -18,6 +19,7 @@ class Pedido extends Entity implements Cloneable {
 	FormaDeEnvio formaDeEnvio
 	String nombre
 	
+	@Dependencies("platos")
 	def getMonto(){ 
 		platos.map[ getPrecio() ].reduce[ a,b | a+b ]
 		

@@ -18,9 +18,9 @@ class PedidoTest {
 		val carla = new Cliente("Carla", "carla@gmail.com")
 		
 		val pedido = new Pedido(carla, new RetiraPorElLocal(), "pedido Carla")
-		val plato = new Plato(margherita, TamanioJava.GRANDE)
+		val plato = new Plato(margherita, Tamanio.GRANDE)
 		
-		pedido.agregarPedido(plato)
+		pedido.agregarPlato(plato)
 		
 		assertEquals(pedido.getMonto(), 10.0, 0)
 		
@@ -32,9 +32,9 @@ class PedidoTest {
 		val carla = new Cliente("Carla", "carla@gmail.com")
 		
 		val pedido = new Pedido(carla, new RetiraPorElLocal(), "pedido Carla")
-		val plato = new Plato(margherita, TamanioJava.PORCION)
+		val plato = new Plato(margherita, Tamanio.PORCION)
 		
-		pedido.agregarPedido(plato)
+		pedido.agregarPlato(plato)
 		
 		assertEquals(pedido.getMonto(), 1.25, 0)
 		

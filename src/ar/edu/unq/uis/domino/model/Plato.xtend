@@ -5,18 +5,20 @@ import java.util.List
 import java.util.ArrayList
 import org.uqbar.commons.model.annotations.Observable
 import org.uqbar.commons.model.Entity
+import org.uqbar.commons.model.annotations.TransactionalAndObservable
+import org.uqbar.commons.model.annotations.Dependencies
 
-@Observable
+@TransactionalAndObservable
 @Accessors
 class Plato extends Entity {
 	Pizza pizzaBase
-	TamanioJava tamanio
+	Tamanio tamanio
 	List<IngredienteExtra> ingredientesExtras = new ArrayList<IngredienteExtra>
 	
 	
 	new(){}
 	
-	new(Pizza pizza, TamanioJava tamanio) {
+	new(Pizza pizza, Tamanio tamanio) {
 		this.pizzaBase = pizza
 		this.tamanio = tamanio
 	}
@@ -25,6 +27,7 @@ class Plato extends Entity {
 		ingredientesExtras.add(i)
 	}
 	
+	@Dependencies("platos")
 	def getPrecio(){
 		(pizzaBase.getPrecio() * tamanio.factor) + calcularExtras()
 	}

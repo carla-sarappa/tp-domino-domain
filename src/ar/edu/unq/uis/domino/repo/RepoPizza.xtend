@@ -10,8 +10,11 @@ class RepoPizza extends CollectionBasedRepo<Pizza> {
 	def void createCustom(String nombre) {
 		this.create(PizzaFactory.construirPizzaCustom(nombre))
 	}
-	def void createPromo(String nombre,Double precio) {
-		this.create(PizzaFactory.construirPizzaPromo(nombre,precio))
+	def Pizza createPromo(String nombre,Double precio) {
+		val pizza = PizzaFactory.construirPizzaPromo(nombre,precio)
+		this.create(pizza)
+		pizza
+		
 	}
 	override protected getCriterio(Pizza arg0) {
 		
