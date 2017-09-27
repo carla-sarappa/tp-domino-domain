@@ -6,9 +6,15 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 @Observable
+
 class Estado extends Entity {
 	Estado siguiente
 	Estado anterior
+	String nombre
+	
+	new(){
+		this.nombre = this.class.simpleName
+	}
 	
 	override def toString(){
 		getNombre()
@@ -20,10 +26,10 @@ class Estado extends Entity {
 		sig
 	}
 	
-	def String getNombre(){
-		this.class.simpleName
-	}
-	
+//	def String getNombre(){
+//		this.class.simpleName
+//	}
+//	
 	def Boolean getHasNext(){
 		siguiente != null
 	}
@@ -32,8 +38,16 @@ class Estado extends Entity {
 		anterior != null
 	}
 	
-	def Boolean getCerrado(){
-		false
+	def Boolean getAbierto(){
+		true
+	}
+	
+	override int hashCode() {
+		nombre.hashCode
+	}
+
+	override boolean equals(Object obj) {
+		return obj != null && getClass() == obj.getClass() && nombre.equals((obj as Estado).nombre)
 	}
 	
 }
@@ -59,16 +73,16 @@ class EnViaje extends Estado {
 }
 class Entregado extends Estado {
 	
-	override Boolean getCerrado(){
-		true
+	override Boolean getAbierto(){
+		false
 	}
 	
 }
 
 class Cancelado extends Estado {
 	
-	override Boolean getCerrado(){
-		true
+	override Boolean getAbierto(){
+		false
 	}
 	
 }

@@ -21,9 +21,11 @@ abstract class FormaDeEnvio {
 			estados.add(estadoInicial)
 			estadoInicial = estadoInicial.siguiente
 		}		
-				
+		estados.add(new Cancelado())
 		return estados
 	}
+	
+	
 	
 	
 }
