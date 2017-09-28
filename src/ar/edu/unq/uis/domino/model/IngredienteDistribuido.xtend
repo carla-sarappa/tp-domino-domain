@@ -10,8 +10,13 @@ class IngredienteDistribuido extends Entity {
 	Ingrediente ingrediente
 	Distribucion distribucion
 	
+	
 	new(Ingrediente ingrediente, Distribucion distribucion){
 		this.ingrediente = ingrediente
 		this.distribucion = distribucion
+	}
+	
+	def getPrecio(){
+		return ingrediente.precio
 	}
 }

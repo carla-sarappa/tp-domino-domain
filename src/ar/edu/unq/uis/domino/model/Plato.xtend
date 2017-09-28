@@ -10,10 +10,10 @@ import org.uqbar.commons.model.annotations.Dependencies
 
 @TransactionalAndObservable
 @Accessors
-class Plato extends Entity {
+class Plato extends Entity implements ConIngrediente{
 	Pizza pizzaBase
 	Tamanio tamanio
-	List<IngredienteExtra> ingredientesExtras = new ArrayList<IngredienteExtra>
+	List<IngredienteDistribuido> ingredientes = new ArrayList<IngredienteDistribuido>
 	Pedido pedido
 	
 	new(){}
@@ -24,21 +24,21 @@ class Plato extends Entity {
 		this.pedido = pedido
 	}
 	
-	def agregarExtra(IngredienteExtra i){
-		ingredientesExtras.add(i)
+	def agregarExtra(IngredienteDistribuido i){
+		ingredientes.add(i)
 	}
 	
-	@Dependencies("pizzaBase", "tamanio", "ingredientesExtras")
+	@Dependencies("pizzaBase", "tamanio", "ingredientes")
 	def getPrecio(){
 		
 		(pizzaBase.precio * tamanio.factor) + calcularExtras()
 	}
 	
 	def calcularExtras(){
-		if (ingredientesExtras.size == 0) {
+		if (ingredientes.size == 0) {
 			return 0.0
 		} else {
-			ingredientesExtras.map[ getPrecio() ].fold(0.0)[ a,b | a+b ]
+			ingredientes.map[ getPrecio() ].fold(0.0)[ a,b | a+b ]
 			
 		}
 	}
