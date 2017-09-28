@@ -14,29 +14,31 @@ class Plato extends Entity {
 	Pizza pizzaBase
 	Tamanio tamanio
 	List<IngredienteExtra> ingredientesExtras = new ArrayList<IngredienteExtra>
-	
+	Pedido pedido
 	
 	new(){}
 	
-	new(Pizza pizza, Tamanio tamanio) {
+	new(Pizza pizza, Tamanio tamanio, Pedido pedido) {
 		this.pizzaBase = pizza
 		this.tamanio = tamanio
+		this.pedido = pedido
 	}
 	
 	def agregarExtra(IngredienteExtra i){
 		ingredientesExtras.add(i)
 	}
 	
-	@Dependencies("platos")
+	@Dependencies("pizzaBase", "tamanio", "ingredientesExtras")
 	def getPrecio(){
-		(pizzaBase.getPrecio() * tamanio.factor) + calcularExtras()
+		
+		(pizzaBase.precio * tamanio.factor) + calcularExtras()
 	}
 	
 	def calcularExtras(){
 		if (ingredientesExtras.size == 0) {
-			return 0
+			return 0.0
 		} else {
-			ingredientesExtras.map[ getPrecio() ].reduce[ a,b | a+b ]
+			ingredientesExtras.map[ getPrecio() ].fold(0.0)[ a,b | a+b ]
 			
 		}
 	}

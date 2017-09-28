@@ -7,11 +7,11 @@ import java.util.ArrayList
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.annotations.TransactionalAndObservable
 import org.uqbar.commons.model.annotations.Dependencies
+import ar.edu.unq.uis.domino.repo.Repositories
 
 @Accessors
 @TransactionalAndObservable
 class Pedido extends Entity implements Cloneable {
-	List<Plato> platos = new ArrayList<Plato>
 	Cliente cliente
 	Date fecha
 	String aclaraciones
@@ -21,12 +21,12 @@ class Pedido extends Entity implements Cloneable {
 	
 	@Dependencies("platos")
 	def getMonto(){ 
-		platos.map[ getPrecio() ].reduce[ a,b | a+b ]
-		
+		val subtotal = getPlatos.map[ getPrecio() ].fold(0.0)[ a,b | a+b ]
+		subtotal + formaDeEnvio.getCostoEnvio()
 	}
 	
-	def agregarPlato(Plato plato) {
-		platos.add(plato)
+	def getPlatos() {
+		Repositories.getPlatos().allInstances.filter[ pedido == this].toList
 	}
 	
 	new(Cliente cliente, FormaDeEnvio formaDeEnvio, String nombre){
