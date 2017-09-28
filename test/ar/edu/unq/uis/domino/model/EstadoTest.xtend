@@ -88,15 +88,6 @@ class EstadoTest extends ApplicationContextTest {
 		verify(sender, (never)).sendMail(any, any, any)
 	}
 	
-	/**
-   * Returns a <code>TestSuite</code> instance that contains all
-   * the declared <code>TestCase</code> to run.
-   * 
-   * @return a <code>TestSuite</code> instance.
-   */
-//	def static final Test suite(){
-//    	return new TestSuite(EstadoTest)
-//	}
 
 }
 
