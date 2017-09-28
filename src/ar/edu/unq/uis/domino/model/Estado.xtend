@@ -3,6 +3,7 @@ package ar.edu.unq.uis.domino.model;
 import org.uqbar.commons.model.annotations.Observable
 import org.uqbar.commons.model.Entity
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.Date
 
 @Accessors
 @Observable
@@ -26,10 +27,8 @@ class Estado extends Entity {
 		sig
 	}
 	
-//	def String getNombre(){
-//		this.class.simpleName
-//	}
-//	
+	def void update(Pedido pedido){}
+		
 	def Boolean getHasNext(){
 		siguiente != null
 	}
@@ -72,6 +71,10 @@ class EnViaje extends Estado {
 	
 }
 class Entregado extends Estado {
+	
+	override update(Pedido pedido){
+		pedido.fechaCerrado = new Date(System.currentTimeMillis)
+	}
 	
 	override Boolean getAbierto(){
 		false

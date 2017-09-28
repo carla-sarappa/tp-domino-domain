@@ -14,6 +14,7 @@ import ar.edu.unq.uis.domino.repo.Repositories
 class Pedido extends Entity implements Cloneable {
 	Cliente cliente
 	Date fecha
+	Date fechaCerrado
 	String aclaraciones
 	Estado estado
 	FormaDeEnvio formaDeEnvio
@@ -39,6 +40,7 @@ class Pedido extends Entity implements Cloneable {
 	
 	def estadoSiguiente(){
 		this.estado = this.estado.siguiente
+		this.estado.update(this)
 	}
 	
 	def estadoAnterior(){
@@ -50,7 +52,8 @@ class Pedido extends Entity implements Cloneable {
 	}
 	
 	def getTiempoDeEspera(){
-		
+		if (fechaCerrado == null || fecha == null) return null
+		return ((fechaCerrado.time - fecha.time) / (60*1000)).intValue
 	}
 
 }
