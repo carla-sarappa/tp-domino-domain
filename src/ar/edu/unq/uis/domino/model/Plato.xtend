@@ -30,7 +30,6 @@ class Plato extends Entity implements ConIngrediente{
 	
 	@Dependencies("pizzaBase", "tamanio", "ingredientes")
 	def getPrecio(){
-		
 		(pizzaBase.precio * tamanio.factor) + calcularExtras()
 	}
 	
