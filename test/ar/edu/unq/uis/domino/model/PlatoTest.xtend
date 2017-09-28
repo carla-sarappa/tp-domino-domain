@@ -8,7 +8,7 @@ import org.junit.Before
 class PlatoTest extends ApplicationContextTest {
 	
 	@Test
-	def dadoUnPlatoPorcion_SeCalculaElCostoFinalSegunSuFactor() {
+	def dadoUnPlatoPorcionRetiraEnLocal_SeCalculaElCostoFinalSegunElFactorDelTamanio() {
 		val todaLaPizza = Repositories.distribuciones.createDistribucion("Toda la pizza")
 		val bacon = Repositories.ingredientes.createIngrediente("Bacon", 2.0)
 		val baconTodaLaPizza = new IngredienteDistribuido(bacon, todaLaPizza)
@@ -19,12 +19,27 @@ class PlatoTest extends ApplicationContextTest {
 		val plato = Repositories.platos.createPlato(margherita, Tamanio.PORCION, pedido)
 		plato.agregarExtra(baconTodaLaPizza)
 		
-		assertEquals(3.25, plato.getPrecio(), 0)
+		assertEquals(3.25, pedido.monto, 0)
 	}
 	
 	@Test
-	def dadoUnPlatoConTamanioFamiliarYPizzaCustom_suPrecioEsDe87con50(){
-		val pizzaCustom = PizzaFactory.construirPizzaCustom("Pindonga")
+	def dadoUnPlatoPorcionParaDelivery_SeCalculaElCostoFinalDelPedido() {
+		val todaLaPizza = Repositories.distribuciones.createDistribucion("Toda la pizza")
+		val bacon = Repositories.ingredientes.createIngrediente("Bacon", 2.0)
+		val baconTodaLaPizza = new IngredienteDistribuido(bacon, todaLaPizza)
+		val margherita = Repositories.pizzas.createPromo("Margherita", 10.0)
+		val carlagmail = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla gmail")
+
+		val pedido = Repositories.pedidos.createPedido(carlagmail, new Delivery("Lebensohn 62"), "pedido Carla")
+		val plato = Repositories.platos.createPlato(margherita, Tamanio.PORCION, pedido)
+		plato.agregarExtra(baconTodaLaPizza)
+		
+		assertEquals(18.25, pedido.monto, 0)
+	}
+	
+	@Test
+	def dadoUnPedidoDePlatoTamanioFamiliar_Y_PizzaCustom_suPrecioEsDe87con50(){
+		val pizzaCustom = PizzaFactory.construirPizzaCustom("Mi favorita")
 		val mitadderecha = new Distribucion("Mitad derecha")
 		val mitadizquierda = new Distribucion("Mitad izquierda")
 		
@@ -37,8 +52,9 @@ class PlatoTest extends ApplicationContextTest {
 		val carlagmail = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla gmail")
 		
 		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal(), "pedido Carla")
-		val plato = new Plato(pizzaCustom, Tamanio.FAMILIAR, pedido)
+		val plato = Repositories.platos.createPlato(pizzaCustom, Tamanio.FAMILIAR, pedido)
+
 		
-		assertEquals(87.5, plato.getPrecio(), 0)
+		assertEquals(87.5, pedido.monto, 0)
 	}
 }

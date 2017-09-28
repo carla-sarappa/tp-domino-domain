@@ -39,12 +39,11 @@ class Pedido extends Entity implements Cloneable {
 	}
 	
 	def estadoSiguiente(){
-		this.estado = this.estado.siguiente
-		this.estado.update(this)
+		estado.cambiarEstadoSiguiente(this)
 	}
 	
 	def estadoAnterior(){
-		this.estado = this.estado.anterior
+		estado.cambiarEstadoAnterior(this)
 	}
 	
 	def cancelar(){

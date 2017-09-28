@@ -4,6 +4,7 @@ import org.uqbar.commons.model.annotations.Observable
 import org.uqbar.commons.model.Entity
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Date
+import ar.edu.unq.uis.domino.exceptions.BusinessException
 
 @Accessors
 @Observable
@@ -49,10 +50,25 @@ class Estado extends Entity {
 		return obj != null && getClass() == obj.getClass() && nombre.equals((obj as Estado).nombre)
 	}
 	
+	def cambiarEstadoSiguiente(Pedido pedido) {
+		pedido.estado = this.siguiente
+		this.update(pedido)
+	}
+	
+	def cambiarEstadoAnterior(Pedido pedido) {
+		pedido.estado = this.anterior
+	}
+	
+	def cambioEstadoInvalido(){
+		throw new BusinessException("El pedido se encuentra " + this.class.simpleName + " no puede cambiar a otro estado")
+	}
+	
 }
 
 class Preparando extends Estado {
-
+	override cambiarEstadoAnterior(Pedido pedido){
+		cambioEstadoInvalido
+	}
 		
 }
 
@@ -79,11 +95,31 @@ class EnViaje extends Estado {
 	}	
 }
 
-class Entregado extends Estado {
+abstract class EstadoCerrado extends Estado {
+	override Boolean getAbierto(){
+		false
+	}
+	
+	
+	override cambiarEstadoSiguiente(Pedido pedido) {
+		cambioEstadoInvalido()	
+	}
+	
+	override cambiarEstadoAnterior(Pedido pedido) {
+		cambioEstadoInvalido()
+	}
+	
+
+	
+}
+
+class Entregado extends EstadoCerrado {
+	
+	final static int ESPERA_MAXIMA = 30
 	
 	override update(Pedido pedido){
 		pedido.fechaCerrado = new Date(System.currentTimeMillis)
-		if(pedido.tiempoDeEspera >= 30){
+		if(pedido.tiempoDeEspera >= ESPERA_MAXIMA){
 			enviarMail(pedido)
 		}
 	}
@@ -92,16 +128,10 @@ class Entregado extends Estado {
 		GmailSender.instance.sendMail(pedido.cliente.email, "Subject", "Sorry por la tardanza")
 	}	
 	
-	override Boolean getAbierto(){
-		false
-	}
 	
 }
 
-class Cancelado extends Estado {
+class Cancelado extends EstadoCerrado {
 	
-	override Boolean getAbierto(){
-		false
-	}
 	
 }
