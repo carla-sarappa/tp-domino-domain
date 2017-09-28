@@ -8,6 +8,7 @@ import ar.edu.unq.uis.domino.model.Estado
 import ar.edu.unq.uis.domino.model.Pedido
 import ar.edu.unq.uis.domino.model.Plato
 import ar.edu.unq.uis.domino.model.Cliente
+import ar.edu.unq.uis.domino.model.GmailSender
 
 public class Repositories {
 	
@@ -34,6 +35,9 @@ public class Repositories {
 	static def RepoCliente getClientes(){
 		ApplicationContext.instance.getSingleton(typeof(Cliente)) as RepoCliente
 	}
+	
+
+	
 	
 	static def init(){
 		ApplicationContext.instance.configureSingleton(typeof(Pizza), new RepoPizza)

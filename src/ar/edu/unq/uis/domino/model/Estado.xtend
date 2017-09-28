@@ -71,16 +71,26 @@ class ListoParaEnviar extends Estado {
 class EnViaje extends Estado {
 	
 	override update(Pedido pedido){
-//		enviarMail()
-	}	
+		enviarMail(pedido)
+	}
 	
+	def void enviarMail(Pedido pedido) {
+		GmailSender.instance.sendMail(pedido.cliente.email, "Subject", "Tu pedido ya esta en viaje")
+	}	
 }
 
 class Entregado extends Estado {
 	
 	override update(Pedido pedido){
 		pedido.fechaCerrado = new Date(System.currentTimeMillis)
+		if(pedido.tiempoDeEspera >= 30){
+			enviarMail(pedido)
+		}
 	}
+	
+	def void enviarMail(Pedido pedido) {
+		GmailSender.instance.sendMail(pedido.cliente.email, "Subject", "Sorry por la tardanza")
+	}	
 	
 	override Boolean getAbierto(){
 		false

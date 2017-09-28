@@ -11,6 +11,11 @@ class Cliente extends Entity {
 	String password
 	String email
 	String direccion
+	Boolean recibido = false
+	
+	def recibisteMail() {
+		recibido
+	}
 	
 	new(String nick, String email, String nombre){
 		this.nick = nick
