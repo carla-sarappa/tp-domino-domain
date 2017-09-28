@@ -52,7 +52,7 @@ class Estado extends Entity {
 	
 	def cambiarEstadoSiguiente(Pedido pedido) {
 		pedido.estado = this.siguiente
-		this.update(pedido)
+		pedido.estado.update(pedido)
 	}
 	
 	def cambiarEstadoAnterior(Pedido pedido) {
@@ -118,7 +118,7 @@ class Entregado extends EstadoCerrado {
 	final static int ESPERA_MAXIMA = 30
 	
 	override update(Pedido pedido){
-		pedido.fechaCerrado = new Date(System.currentTimeMillis)
+		pedido.fechaCerrado = new Date()
 		if(pedido.tiempoDeEspera >= ESPERA_MAXIMA){
 			enviarMail(pedido)
 		}
