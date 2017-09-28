@@ -7,8 +7,10 @@ import ar.edu.unq.uis.domino.model.Distribucion
 @Observable
 class RepoDistribucion extends CollectionBasedRepo<Distribucion> {
 	
-	def void createDistribucion(String nombre) {
-		this.create(new Distribucion(nombre))
+	def Distribucion createDistribucion(String nombre) {
+		val dist = new Distribucion(nombre)
+		this.create(dist)
+		dist
 	}
 	
 	override createExample() {

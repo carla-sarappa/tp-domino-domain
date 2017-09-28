@@ -7,8 +7,10 @@ import org.uqbar.commons.model.annotations.Observable
 @Observable
 class RepoIngredientes extends CollectionBasedRepo<Ingrediente> {
 	
-	def void createIngrediente(String nombre, Double precio) {
-		this.create(new Ingrediente(nombre, precio))
+	def Ingrediente createIngrediente(String nombre, Double precio) {
+		val ing = new Ingrediente(nombre, precio)
+		this.create(ing)
+		ing
 	}
 	
 	override createExample() {

@@ -8,7 +8,7 @@ import ar.edu.unq.uis.domino.model.Estado
 import ar.edu.unq.uis.domino.model.Pedido
 import ar.edu.unq.uis.domino.model.Plato
 
-class Repositories {
+public class Repositories {
 	
 	static def RepoPizza getPizzas() {
 		ApplicationContext.instance.getSingleton(typeof(Pizza)) as RepoPizza
@@ -30,4 +30,13 @@ class Repositories {
 		ApplicationContext.instance.getSingleton(typeof(Plato)) as RepoPlato
 	}
 	
+	static def init(){
+		ApplicationContext.instance.configureSingleton(typeof(Pizza), new RepoPizza)
+		ApplicationContext.instance.configureSingleton(typeof(Ingrediente), new RepoIngredientes)
+		ApplicationContext.instance.configureSingleton(typeof(Distribucion), new RepoDistribucion)
+		ApplicationContext.instance.configureSingleton(typeof(Pedido), new RepoPedido)
+		ApplicationContext.instance.configureSingleton(typeof(Plato), new RepoPlato)
+	}
+	
+
 }

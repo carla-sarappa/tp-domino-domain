@@ -61,15 +61,21 @@ class ListoParaRetirar extends Estado {
 	
 	
 }
+
 class ListoParaEnviar extends Estado {
 	
 	
 	
 }
+
 class EnViaje extends Estado {
 	
+	override update(Pedido pedido){
+//		enviarMail()
+	}	
 	
 }
+
 class Entregado extends Estado {
 	
 	override update(Pedido pedido){

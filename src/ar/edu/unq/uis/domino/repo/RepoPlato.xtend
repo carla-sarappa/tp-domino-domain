@@ -5,7 +5,9 @@ import ar.edu.unq.uis.domino.model.Plato
 import ar.edu.unq.uis.domino.model.Tamanio
 import ar.edu.unq.uis.domino.model.Pizza
 import ar.edu.unq.uis.domino.model.Pedido
+import org.uqbar.commons.model.annotations.Observable
 
+@Observable
 class RepoPlato extends CollectionBasedRepo<Plato> {
 	
 	def Plato createPlato(Pizza pizza, Tamanio tamanio, Pedido pedido) {

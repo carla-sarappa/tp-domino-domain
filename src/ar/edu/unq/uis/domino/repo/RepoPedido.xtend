@@ -4,7 +4,9 @@ import ar.edu.unq.uis.domino.model.Pedido
 import org.uqbar.commons.model.CollectionBasedRepo
 import ar.edu.unq.uis.domino.model.Cliente
 import ar.edu.unq.uis.domino.model.FormaDeEnvio
+import org.uqbar.commons.model.annotations.Observable
 
+@Observable
 class RepoPedido extends CollectionBasedRepo<Pedido> {
 	
 	def Pedido createPedido(Cliente cliente, FormaDeEnvio forma, String nombre) {
