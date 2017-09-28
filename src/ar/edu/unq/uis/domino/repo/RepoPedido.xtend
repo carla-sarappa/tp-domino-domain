@@ -15,6 +15,10 @@ class RepoPedido extends CollectionBasedRepo<Pedido> {
 		pedido
 	}
 	
+	def historial(Cliente cliente){
+		allInstances.filter[it.cliente == cliente].toList
+	}
+	
 	override createExample() {
 		
 	}
