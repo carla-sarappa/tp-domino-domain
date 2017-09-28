@@ -24,4 +24,9 @@ class Pizza extends Entity implements Cloneable, ConIngrediente {
 		ingredientes.add(ingrediente)
 	}
 	
+	def getNombreConPrecio() {
+      nombre.concat(" ($ ").concat(precio.toString).concat(")")
+	}	
+	
+	
 }

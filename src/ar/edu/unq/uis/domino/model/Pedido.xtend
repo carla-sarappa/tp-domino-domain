@@ -34,6 +34,7 @@ class Pedido extends Entity implements Cloneable {
 		this.formaDeEnvio = formaDeEnvio
 		this.nombre = nombre
 		this.cliente = cliente
+		this.fecha = new Date(System.currentTimeMillis)
 	}
 	
 	def estadoSiguiente(){

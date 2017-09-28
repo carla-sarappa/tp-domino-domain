@@ -41,4 +41,5 @@ class Plato extends Entity implements ConIngrediente{
 			
 		}
 	}
+	
 }
