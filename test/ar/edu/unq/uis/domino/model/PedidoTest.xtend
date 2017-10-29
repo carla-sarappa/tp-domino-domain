@@ -15,7 +15,7 @@ class PedidoTest extends ApplicationContextTest {
 		val margherita = Repositories.pizzas.createPromo("Margherita", 10.0)
 		val carlagmail = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla gmail")
 		
-		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal(), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal())
 		val plato = Repositories.platos.createPlato(margherita, Tamanio.GRANDE, pedido)
 				
 		assertEquals(pedido.getMonto(), 10.0, 0)
@@ -27,7 +27,7 @@ class PedidoTest extends ApplicationContextTest {
 		val margherita = Repositories.pizzas.createPromo("Margherita", 10.0)
 		val carlagmail = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla gmail")
 		
-		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal(), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal())
 		val plato = Repositories.platos.createPlato(margherita, Tamanio.PORCION, pedido)
 				
 		assertEquals(pedido.getMonto(), 1.25, 0)
@@ -39,9 +39,9 @@ class PedidoTest extends ApplicationContextTest {
 		val cliente1 = Repositories.clientes.createCliente("cliente1", "cliente1@gmail.com", "cliente1")
 		val cliente2 = Repositories.clientes.createCliente("cliente2", "cliente2@gmail.com", "cliente2")
 		
-		val pedido1 = Repositories.pedidos.createPedido(cliente1, new RetiraPorElLocal(), "pedido Cliente1")
-		val pedido2 = Repositories.pedidos.createPedido(cliente1, new RetiraPorElLocal(), "pedido Cliente1")
-		val pedido3 = Repositories.pedidos.createPedido(cliente1, new RetiraPorElLocal(), "pedido Cliente1")
+		val pedido1 = Repositories.pedidos.createPedido(cliente1, new RetiraPorElLocal())
+		val pedido2 = Repositories.pedidos.createPedido(cliente1, new RetiraPorElLocal())
+		val pedido3 = Repositories.pedidos.createPedido(cliente1, new RetiraPorElLocal())
 		
 		val historialCliente1 = Repositories.pedidos.historial(cliente1)
 		

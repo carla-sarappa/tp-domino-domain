@@ -9,6 +9,7 @@ import org.uqbar.commons.model.annotations.Observable
 class RetiraPorElLocal extends FormaDeEnvio {
 	
 	static final Estado ESTADO_INICIAL = createEstadoInicial() 
+	
 		
 	new(){}
 	

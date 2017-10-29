@@ -15,7 +15,7 @@ class PlatoTest extends ApplicationContextTest {
 		val margherita = Repositories.pizzas.createPromo("Margherita", 10.0)
 		val carlagmail = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla gmail")
 
-		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal(), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal())
 		val plato = Repositories.platos.createPlato(margherita, Tamanio.PORCION, pedido)
 		plato.agregarExtra(baconTodaLaPizza)
 		
@@ -30,7 +30,7 @@ class PlatoTest extends ApplicationContextTest {
 		val margherita = Repositories.pizzas.createPromo("Margherita", 10.0)
 		val carlagmail = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla gmail")
 
-		val pedido = Repositories.pedidos.createPedido(carlagmail, new Delivery("Lebensohn 62"), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(carlagmail, new Delivery("Lebensohn 62"))
 		val plato = Repositories.platos.createPlato(margherita, Tamanio.PORCION, pedido)
 		plato.agregarExtra(baconTodaLaPizza)
 		
@@ -51,7 +51,7 @@ class PlatoTest extends ApplicationContextTest {
 		pizzaCustom.agregarIngrediente(ruculaDer)
 		val carlagmail = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla gmail")
 		
-		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal(), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(carlagmail, new RetiraPorElLocal())
 		val plato = Repositories.platos.createPlato(pizzaCustom, Tamanio.FAMILIAR, pedido)
 
 		

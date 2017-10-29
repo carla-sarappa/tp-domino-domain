@@ -18,7 +18,6 @@ class Pedido extends Entity implements Cloneable {
 	String aclaraciones
 	Estado estado
 	FormaDeEnvio formaDeEnvio
-	String nombre
 	
 	@Dependencies("platos")
 	def getMonto(){ 
@@ -30,10 +29,9 @@ class Pedido extends Entity implements Cloneable {
 		Repositories.getPlatos().allInstances.filter[ pedido == this].toList
 	}
 	
-	new(Cliente cliente, FormaDeEnvio formaDeEnvio, String nombre){
+	new(Cliente cliente, FormaDeEnvio formaDeEnvio){
 		this.estado = formaDeEnvio.estadoInicial
 		this.formaDeEnvio = formaDeEnvio
-		this.nombre = nombre
 		this.cliente = cliente
 		this.fecha = new Date(System.currentTimeMillis)
 	}
@@ -53,6 +51,10 @@ class Pedido extends Entity implements Cloneable {
 	def getTiempoDeEspera(){
 		if (fechaCerrado == null || fecha == null) return null
 		return ((fechaCerrado.time - fecha.time) / (60*1000)).intValue
+	}
+	
+	def getNombre(){
+		return "Pedido " + id
 	}
 
 }

@@ -14,7 +14,7 @@ class EstadoTest extends ApplicationContextTest {
 	def void dadoUnPedidoConEstadoPreparandoQueRetiraPorElLocal_SoloPuedeCambiarAListoParaRetirar(){
 		val margherita = Repositories.pizzas.createPromo("Margherita", 10.0)
 		val carla = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla Gmail")
-		val pedido = Repositories.pedidos.createPedido(carla, new RetiraPorElLocal(), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(carla, new RetiraPorElLocal())
 		
 		pedido.estadoSiguiente()
 		
@@ -23,14 +23,14 @@ class EstadoTest extends ApplicationContextTest {
 	
 	@Test(expected = BusinessException)
 	def void dadoUnPedidoConEstadoPreparando_debeTirarExcepcionSiSeCambiarAlEstadoAnterior(){
-		val pedido = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal(), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal())
 		
 		pedido.estadoAnterior()
 	}
 	
 	@Test
 	def void dadoUnPedidoConTipoDeEnvioRetiraEnLocal_SoloPuedeCambiarAlSiguienteEstadoOAlAnterior(){
-		val pedido = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal(), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal())
 		
 		pedido.estadoSiguiente()
 		assertEquals("ListoParaRetirar", pedido.estado.nombre)
@@ -55,7 +55,7 @@ class EstadoTest extends ApplicationContextTest {
 	def void dadoUnPedidoConDelivery_PasaAEstadoEnViaje(){
 		val margherita = Repositories.pizzas.createPromo("Margherita", 10.0)
 		val carla = Repositories.clientes.createCliente("carlagmail", "carla@gmail.com", "Carla Gmail")
-		val pedido = Repositories.pedidos.createPedido(carla, new Delivery("calle falsa 123"), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(carla, new Delivery("calle falsa 123"))
 		pedido.estadoSiguiente()
 		pedido.estadoSiguiente()
 		
@@ -64,7 +64,7 @@ class EstadoTest extends ApplicationContextTest {
 	
 	@Test
 	def void dadoUnPedidoConTipoDeEnvioDelivery_SoloPuedeCambiarAlSiguienteEstadoOAlAnterior(){
-		val pedido = Repositories.pedidos.createPedido(mock(Cliente), new Delivery("calle falsa 345"), "pedido Carla")
+		val pedido = Repositories.pedidos.createPedido(mock(Cliente), new Delivery("calle falsa 345"))
 		
 		pedido.estadoSiguiente()
 		assertEquals("ListoParaEnviar", pedido.estado.nombre)
@@ -127,7 +127,7 @@ class EstadoTest extends ApplicationContextTest {
 	
 	@Test(expected = BusinessException)
 	def void pedidoQuePasaAEstadoEntregado_noPuedeAvanzarDeEstado(){
-		val pedidoEntregado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal, "Pedido" )
+		val pedidoEntregado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal)
 		pedidoEntregado.estado = new Entregado()
 		
 		pedidoEntregado.estadoSiguiente()
@@ -135,7 +135,7 @@ class EstadoTest extends ApplicationContextTest {
 	
 	@Test(expected = BusinessException)
 	def void pedidoQuePasaAEstadoEntregado_noPuedeRetrocederDeEstado(){
-		val pedidoEntregado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal, "Pedido" )
+		val pedidoEntregado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal)
 		pedidoEntregado.estado = new Entregado()
 		
 		pedidoEntregado.estadoAnterior()
@@ -143,7 +143,7 @@ class EstadoTest extends ApplicationContextTest {
 	
 	@Test(expected = BusinessException)
 	def void pedidoQuePasaAEstadoCancelado_noPuedeAvanzarDeEstado(){
-		val pedidoCancelado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal, "Pedido" )
+		val pedidoCancelado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal)
 		pedidoCancelado.estado = new Cancelado
 		
 		pedidoCancelado.estadoAnterior()
@@ -151,7 +151,7 @@ class EstadoTest extends ApplicationContextTest {
 	
 	@Test(expected = BusinessException)
 	def void pedidoQuePasaAEstadoCancelado_noPuedeRetrocederDeEstado(){
-		val pedidoCancelado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal, "Pedido" )
+		val pedidoCancelado = Repositories.pedidos.createPedido(mock(Cliente), new RetiraPorElLocal)
 		pedidoCancelado.estado = new Cancelado
 		
 		pedidoCancelado.estadoAnterior()

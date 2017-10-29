@@ -7,6 +7,7 @@ import org.uqbar.commons.model.annotations.Observable
 
 @Observable
 abstract class FormaDeEnvio {
+		
 	def double getCostoEnvio(){
 		return 0.0
 	}
@@ -25,7 +26,7 @@ abstract class FormaDeEnvio {
 		return estados
 	}
 	
-	
+
 	
 	
 }

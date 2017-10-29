@@ -9,8 +9,8 @@ import org.uqbar.commons.model.annotations.Observable
 @Observable
 class RepoPedido extends CollectionBasedRepo<Pedido> {
 	
-	def Pedido createPedido(Cliente cliente, FormaDeEnvio forma, String nombre) {
-		val pedido = new Pedido(cliente, forma, nombre)
+	def Pedido createPedido(Cliente cliente, FormaDeEnvio forma) {
+		val pedido = new Pedido(cliente, forma)
 		this.create(pedido)
 		pedido
 	}
