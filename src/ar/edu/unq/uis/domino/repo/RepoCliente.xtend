@@ -23,7 +23,11 @@ class RepoCliente extends CollectionBasedRepo<Cliente> {
 	}
 	
 	override protected getCriterio(Cliente example) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		return [ example.nick == it.nick ]
+	}
+	
+	def findByNick(String nick){
+		return allInstances.findFirst[it.nick == nick ]
 	}
 	
 	override createExample() {
@@ -31,7 +35,7 @@ class RepoCliente extends CollectionBasedRepo<Cliente> {
 	}
 	
 	override getEntityType() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		return Cliente
 	}
 	
 }
