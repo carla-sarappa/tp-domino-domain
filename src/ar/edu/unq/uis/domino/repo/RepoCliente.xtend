@@ -30,6 +30,10 @@ class RepoCliente extends CollectionBasedRepo<Cliente> {
 		return allInstances.findFirst[it.nick == nick ]
 	}
 	
+	def findByEmail(String email){
+		return allInstances.findFirst[it.email == email ]
+	}
+	
 	override createExample() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
