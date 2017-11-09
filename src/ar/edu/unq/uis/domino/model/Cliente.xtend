@@ -23,3 +23,4 @@ class Cliente extends Entity {
 		this.nombre = nombre
 	}
 }
+

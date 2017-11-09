@@ -13,6 +13,10 @@ class RepoDistribucion extends CollectionBasedRepo<Distribucion> {
 		dist
 	}
 	
+	def Distribucion searchByNombre(String nombre){
+		return allInstances.findFirst [ it.nombre == nombre]
+	}
+	
 	override createExample() {
 		
 	}

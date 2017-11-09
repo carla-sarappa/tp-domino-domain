@@ -6,7 +6,6 @@ import org.uqbar.commons.model.annotations.Observable
 @Accessors
 @Observable
 class Delivery extends FormaDeEnvio {
-	String direccion
 	static final Estado ESTADO_INICIAL = createEstadoInicial()
 	
 	override double getCostoEnvio(){

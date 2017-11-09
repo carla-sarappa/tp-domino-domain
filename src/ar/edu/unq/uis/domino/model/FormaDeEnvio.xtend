@@ -6,7 +6,9 @@ import java.util.ArrayList
 import org.uqbar.commons.model.annotations.Observable
 
 @Observable
+@Accessors
 abstract class FormaDeEnvio {
+	String direccion
 		
 	def double getCostoEnvio(){
 		return 0.0
