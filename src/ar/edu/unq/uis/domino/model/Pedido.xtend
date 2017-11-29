@@ -57,4 +57,8 @@ class Pedido extends Entity implements Cloneable {
 		return "Pedido " + id
 	}
 
+	def hasEstado(String estado){
+		return this.estado.nombre == estado 
+	}
+
 }
